@@ -239,7 +239,11 @@
 								{block:SubmissionsEnabled}
 								| <a href="/submit">{SubmitLabel}</a>
 								{/block:SubmissionsEnabled}
-								
+								{block:HasPages}
+								{block:Pages}
+								| <a href="{URL}">{Label}</a>
+								{/block:Pages}
+								{/block:HasPages}
 								<form action="/search" method="get">
 									<input type="text" name="q" placeholder="Search..." value="{SearchQuery}" /><input type="submit" value="&gt;" />
 								</form>
