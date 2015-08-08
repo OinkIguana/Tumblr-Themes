@@ -391,11 +391,17 @@
 					<footer id="footer-{PostID}">
 						<div>{block:ContentSource}{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource}</div>
 						<div>{block:Submission}Submitted by <a href="{SubmitterURL}">{Submitter}</a>{/block:Submission}</div>
-						<div class="half">{NoteCountWithLabel}</div><div class="half">{block:Date}<a href="{Permalink}" title="{ShortMonth} {DayOfMonth}, {Year} - {12Hour}:{Minutes} {CaptialAmPm}">{TimeAgo}</a>{/block:Date}</div>
+						<div class="half">{block:NoteCount}{NoteCountWithLabel}{/block:NoteCount}</div><div class="half">{block:Date}<a href="{Permalink}" title="{ShortMonth} {DayOfMonth}, {Year} - {12Hour}:{Minutes} {CaptialAmPm}">{TimeAgo}</a>{/block:Date}</div>
 						<div><div class="button heart">{LikeButton}</div><span style="display:inline-block;width:20%;"></span><div class="button reblog">{ReblogButton}</div></div>
 					</footer>
 					<div class="tags">{block:Tags}<a href="{TagURL}" class="tag">#{Tag}</a>&nbsp;&nbsp;{/block:Tags}</div>
-				</article>{/block:Posts}<!-- v.v -->
+				</article>{/block:Posts}<!-- v.v -->{block:PermalinkPage}{block:PostNotes}
+				<article class="text">
+					<header>
+						<h2>Notes</h2>
+					</header>
+					{PostNotes}
+				</article>{/block:PostNotes}{/block:PermalinkPage}
 			</div>
 		</section>
 		<section id="sidebar">{block:ShowTitle}
@@ -451,7 +457,7 @@
 			spot.innerHTML = months[date[1] - 1] + " " + date[2] + ", " + date[0];{/block:DayPage}
 		})();
 		</script>
-		<script {block:SearchPage}src=""{/block:SearchPage}{block:TagPage}src=""{/block:TagPage}{block:DayPage}src=""{/block:DayPage}>
+		<script {block:SearchPage}src=""{/block:SearchPage}{block:TagPage}src=""{/block:TagPage}{block:DayPage}src=""{/block:DayPage}{block:PermalinkPage}src=""{/blockPermalinkPage}>
 		(function() {
 			var content = document.getElementById('content');
 			var page = 1;
