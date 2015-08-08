@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="lt-ie10 lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="lt-ie10 lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="lt-ie10 lt-ie9"> <![endif]-->
+<!--[if IE 9]><html class="lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html> <!--<![endif]-->
+	<head>
+		{MobileAppHeaders}
+		<meta charset="utf-8">
+		<title>{Title}{block:PostTitle} - {PostTitle}{/block:PostTitle}</title>{block:Description}
+		<meta name="description" content="{MetaDescription}">{/block:Description}{block:Hidden}
+		<meta name="text:Subtitle" content="" />
+		<meta name="color:Text" content="" />
+		<meta name="color:Link" content="" />
+		<meta name="color:LinkHover" content="" />
+		<meta name="font:Main" content="" />
+		<meta name="font:Heading" content="" />
+		<meta name="image:Background" content="" />
+		<meta name="image:Sidebar" content="" />
+		<meta name="text:Links" content="example.com|example.com" />
+		<meta name="text:LinkTitles" content="First link|Second link" />
+		<meta name="if:FixedBackground" content="false"/>
+		<meta name="if:ShowSubtitle" content="true"/>
+		<meta name="if:ShowLinks" content="false"/>{/block:Hidden}
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<link rel="shortcut icon" href="{Favicon}">
+		<link rel="apple-touch-icon-precomposed" href="{PortraitURL-128}">
+		<link rel="alternate" type="application/rss+xml" href="{RSS}">
+		<!-- HTML5 Shiv -->
+		<!--[if lt IE 9]>
+			<script src="http://static.tumblr.com/hriofhd/Qj0m8pn7q/html5shiv.js"></script>
+		<![endif]-->
+		<style>
+			* {
+				font-family: {font:Main};
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+				color: {color:Text};
+			}
+			span.spacer {
+				display: inline-block;
+				width: 0px;
+				height: 100%;
+			}
+			span.spaced {
+				display: inline-block;
+			}
+			span.middle {
+				vertical-align: middle;
+			}
+			span.absolute-spacefiller {
+				display: block;
+			}
+			a {
+				color: {color:Link}
+			}
+			a:hover {
+				color: {color:LinkHover}
+			}
+			header, h1, h2, h3, h4, h5, h6 {
+				font-family: {font:Heading};
+				color: {TitleColor};
+			}
+			h1, h3 {
+				text-align: center;
+			}
+			h2 {
+				margin-left: 32px;
+			}
+			p, ul, ol, blockquote {
+				margin: 8px 16px;
+			}
+			li{
+				margin: 4px 32px;
+			}
+			blockquote {
+				padding-left: 16px;
+				border-left: 1px dotted {color:Text};
+			}
+			th {
+				padding-right: 16px;
+			}
+			.top {
+				pointer-events: none;
+			}
+			.hr {
+				border-bottom: 2px dotted {color:Text};
+			}
+			section#content {
+				position: absolute;
+				left: 0;
+				top: 0;
+				right: 325px;
+				min-height: 100%;
+				background-image: URL("{image:Background}");{block:IfFixedBackground}
+				background-attachment: fixed;
+				background-size: cover;
+				background-repeat: no-repeat;{/block:IfFixedBackground}
+			}
+			section > header:first-child {
+				position: relative;
+				margin: 0 auto;
+				padding: 16px 50px;
+				width: 600px;
+				height: 50px;
+				background-color: rgba(255, 255,255, 0.4);
+				border-radius: 0 0 15px 15px;
+			}
+			section > header:first-child a {
+				position: absolute;
+				top: 0;
+				display: block;
+				width: 50px;
+				height: 50px;
+				font-size: 24pt;
+				text-decoration: none;
+				text-align: center;
+			}
+			section > header:first-child a.left {
+				left: 0;
+			}
+			section > header:first-child a.right {
+				right: 0;
+			}
+			section#content div#content-container {
+				width: 100%;
+			}
+			article {
+				position: relative;
+				margin: 100px auto;
+				padding: 16px 50px;
+				width: 600px;
+				text-align: left;
+				background-color: rgba(255, 255,255, 0.4);
+				border-radius: 15px;
+			}
+			article.photo img {
+				max-width: 100%;
+			}
+			div.quote {
+				padding: 16px 32px;
+				border-width: 0 2px;
+				border-style: dotted;
+				border-color: {color:Text};
+			}
+			div.quote.short {
+				font-size: 24px;
+			}
+			div.quote.medium {
+				font-size: 20px;
+			}
+			div.quote.long {
+				font-size: 16px;
+			}
+			div.quote.source {
+				text-align: right;
+			}
+			article.link > a:first-of-type {
+				display: block;
+				width: 100%;
+				height: 128px;
+				background-repeat: no-repeat;
+				background-attachment: left;
+				background-size: contain;
+				padding-left: 144px;
+				border-radius: 15px;
+				color: {color:Text};
+				text-decoration: none;
+				font-size: 14px;
+				background-color: {color:Link};
+			}
+			article.link > a:first-of-type:hover {
+				background-color: {color:LinkHover};
+			}
+			div.audio {
+				position: relative;
+				background-repeat: no-repeat;
+				background-attachment: left;
+				background-size: contain;
+				background-color: {AccentColor};
+				width: 500px;
+				height: 250px;
+				overflow: visible;
+			}
+			div.audio-player {
+				width: 100%;
+				text-align: center;
+				height: 64px;
+				padding: 18px 0;
+			}
+			div.audio div {
+				position: absolute;
+				right: 0;
+				width: 250px;
+				height: 250px;
+				overflow: visible;
+			}
+			div.person {
+				padding-left: 64px;
+				background-repeat: no-repeat;
+				background-attachment: left;
+				border-bottom: 1px dotted {color:Text}
+			}
+			footer {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}
+			footer div {
+				text-align: center;
+				font-size: 14px;
+			}
+			footer div.half {
+				display: inline-block;
+				width: 50%;
+			}
+			div.button {
+				display: inline-block;
+				margin-bottom: 4px;
+				width: 28px;
+				height: 28px;
+			}
+			div.like_button {
+				border-radius: 3px;
+				padding: 4px;
+				width: 28px;
+				height: 28px;
+				background-color: rgba(215, 95, 69, 0.4)
+			}
+			div.reblog {
+				border-radius: 3px;
+				padding: 4px;
+				background-color: rgba(85, 187, 137, 0.4)
+			}
+			div.tags {
+				position: absolute;
+				top: 100%;
+			}
+			section#sidebar {
+				position: fixed;
+				right: 0;
+				top: 0;
+				bottom: 0;
+				padding: 135px 16px;
+				width: 325px;
+				background-image: URL("{image:Sidebar}");
+				border-left: 4px solid {AccentColor};
+				text-align: center;
+			}
+			ul#links {
+				border: 1px solid #AAA;
+				border-radius: 5px;
+			}
+			ul#links li {
+				margin: 0;
+				list-style: none;
+				text-align: left;
+				border-bottom: 1px solid #AAA;
+			}
+			ul#links li:last-of-type {
+				border: none;
+			}
+			ul#links li a {
+				display: block;
+				width: 100%;
+				height: 30px;
+				padding: 5px;
+				text-decoration: none;
+			}
+			form {
+				height: 30px;
+			}
+			form input {
+				height: 100%;
+				padding: 5px;
+				border: 1px solid #AAA;
+				font-family: {font:Main};
+			}
+			form input[type="text"] {
+				width: 70%;
+				border-radius: 5px 0 0 5px;
+				border-right: none;
+			}
+			form input[type="submit"] {
+				width: 30%;
+				border-radius: 0 5px 5px 0;
+				background-color: transparent;
+			}
+			form input[type="submit"]:hover {
+				background-color: RGBA(100, 100, 100, 0.2);
+			}
+			section#sidebar footer {
+				font-size: 14px;
+				position: absolute;
+				bottom: 8px;
+				opacity: 0.7;
+			}
+			{CustomCSS}
+		</style>
+	</head>
+	<body>
+		<section id="content">{block:DayPage}
+			<header>{block:DayPagination}{block:PreviousDayPage}<a href="{PreviousDayPage}" class="left">&larr;</a>{/block:PreviousDayPage}{/block:DayPagination}<h1 id="date"></h1>{block:DayPagination}{block:NextDayPage}<a href="{NextDayPage}" class="right">&rarr;</a>{/block:NextDayPage}{/block:DayPagination}</header>{/block:DayPage}{block:TagPage}
+			<header><h1>{Tag}</h1></header>{/block:TagPage}{block:SearchPage}
+			<header><h1>{SearchQuery}</h1></header>{/block:SearchPage}
+			<div id="content-container"><!-- ^.^ -->{block:SearchPage}{block:NoSearchResults}
+				<article class="text">
+					<header>
+						<h2>{lang:No results found}</h2>
+					</header>
+					<div>
+						{lang:Sorry}
+					</div>
+				</article>{/block:NoSearchResults}{/block:SearchPage}{block:Posts}
+				<article class="{PostType}">{block:Text}{block:Title}
+					<header>
+						<h2>{Title}</h2>
+					</header>{/block:Title}
+					<div>
+						{Body}
+					</div>{/block:Text}{block:Photo}
+					<figure>{LinkOpenTag}
+						<img src="{PhotoURL-500}" alt="Photo" width="{PhotoWidth-500}">{LinkCloseTag}{block:Caption}
+						<figcaption {block:RebloggedFrom}class="reblog"{/block:RebloggedFrom}>{Caption}</figcaption>{/block:Caption}
+					</figure>{/block:Photo}{block:Panorama}
+					<figure>{LinkOpenTag}
+						<img src="{PhotoURL-500}" alt="Photo" width="{PhotoWidth-500}">{LinkCloseTag}{block:Caption}
+						<figcaption {block:RebloggedFrom}class="reblog"{/block:RebloggedFrom}>{Caption}</figcaption>{/block:Caption}
+					</figure>{/block:Panorama}{block:Photoset}
+					<figure>
+						{Photoset-500}{block:Caption}
+						<figcaption {block:RebloggedFrom}class="reblog"{/block:RebloggedFrom}>{Caption}</figcaption>{/block:Caption}
+					</figure>{/block:Photoset}{block:Quote}
+					<div class="quote {Length}">
+						{Quote}
+					</div>{block:Source}
+					<div class="quote source">
+						{Source}
+					</div>{/block:Source}{/block:Quote}{block:Link}
+					<a href="{URL}" {Target} {block:Thumbnail}style="background-image: URL('{Thumbnail}')"{/block:Thumbnail}><span class="spacer middle"></span><span class="spaced middle">{Name} {block:Host}({Host}){/block:Host}</span></a>
+					{block:Excerpt}<div class="quote">{Excerpt}</div>{/block:Excerpt}
+					{block:Author}<div class="quote source">{Author}</div>{/block:Author}
+					{block:Description}<div>{Description}</div>{/block:Description}{/block:Link}{block:Chat}
+					<header>
+						<h2>{Title}</h2>
+					</header>{/block:Title}
+					<table>{block:Lines}
+						<tr>
+							<th>{block:Label}{Label}{/block:Label}</th><td>{Line}</td>
+						</tr>{/block:Lines}
+					</table>{/block:Chat}{block:Audio}{block:AudioEmbed}
+					{AudioEmbed-500}{/block:AudioEmbed}{block:AudioPlayer}
+					<div class="audio" {block:AlbumArt}style="background-image: URL('{AlbumArtURL}')"{/block:AlbumArt}>
+						<div class="bottom audio-player">
+							{AudioPlayer}
+						</div>
+						<div class="top">
+							<p style="height: 48px"><!-- Spacer --></p>
+							{block:TrackName}<h3>{TrackName}</h3>{/block:TrackName}
+							{block:Album}<p>{Album}</p>{/block:Album}
+							{block:Artist}<p>By {Artist}</p>{/block:Artist}
+						</div>
+					</div>{/block:AudioPlayer}{block:Caption}
+					<div>
+						{Caption}
+					</div>{/block:Caption}{/block:Audio}{block:Video}
+					{Video-500}{block:Caption}
+					<div>
+						{Caption}
+					</div>{/block:Caption}{/block:Video}{block:Answer}
+					<div class="person" style="background-image: URL('{AskerPortraitURL-48}');">
+						{lang:Asker asked}:
+						<p>
+							{Question}
+						</p>
+					</div>
+					<div class="person" style="background-image: URL('{block:NotReblog}{PortraitURL-48}{/block:NotReblog}{block:Answerer}{AnswererPortraitURL-48}{/block:Answerer}');">
+						Answered{block:Answerer}
+						by {Answerer}{/block:Answerer}:
+						<p>
+							{Answer}
+						</p>
+					</div>{block:RebloggedFrom}
+					<p>
+						{Replies}
+					</p>{/block:RebloggedFrom}{/block:Answer}
+					<span class="absolute-spacefiller" data-for="footer-{PostID}"></span>
+					<footer id="footer-{PostID}">
+						<div>{block:ContentSource}{lang:Source}: <a href="{SourceURL}">{SourceTitle}</a>{/block:ContentSource}</div>
+						<div>{block:Submission}Submitted by <a href="{SubmitterURL}">{Submitter}</a>{/block:Submission}</div>
+						<div class="half">{NoteCountWithLabel}</div><div class="half">{block:Date}<a href="{Permalink}" title="{ShortMonth} {DayOfMonth}, {Year} - {12Hour}:{Minutes} {CaptialAmPm}">{TimeAgo}</a>{/block:Date}</div>
+						<div><div class="button heart">{LikeButton}</div><span style="display:inline-block;width:20%;"></span><div class="button reblog">{ReblogButton}</div></div>
+					</footer>
+					<div class="tags">{block:Tags}<a href="{TagURL}" class="tag">#{Tag}</a>&nbsp;&nbsp;{/block:Tags}</div>
+				</article>{/block:Posts}<!-- v.v -->
+			</div>
+		</section>
+		<section id="sidebar">{block:ShowTitle}
+			<h1>{Title}</h1>{/block:ShowTitle}{block:ShowAvatar}
+			<a href="{BlogURL}">
+				<img src="{PortraitURL-96}" alt="{Title}">
+			</a>{/block:ShowAvatar}{block:IfShowSubtitle}
+			<h3>{text:Subtitle}</h3>{/block:IfShowSubtitle}{block:ShowDescription}
+			<p>
+				{Description}
+			</p>{/block:ShowDescription}{block:AskEnabled}
+			<p>
+				<a href="{BlogURL}ask">{AskLabel}</a>{/block:AskEnabled}{block:SubmitEnabled}
+				<a href="{BlogURL}submit">{SubmitLabel}</a>{/block:SubmitEnabled}
+			</p>
+			<div class="hr"></div>
+			<ul id="links">{block:HasPages}{block:Pages}
+				<li><a href="{URL}">{Label}</a></li>{/block:Pages}{/block:HasPages}
+			</ul>
+			<form action="/search" method="get">
+			    <input type="text" name="q" value="{SearchQuery}"/><input type="submit" value="Search"/>
+			</form>
+			<footer>
+				Theme: <a href="on-the-left-theme.tumblr.com">On the Left</a> by <a href="oinkiguana.tumblr.com">OinkIguana</a>
+			</footer>
+		</section>
+		<script>
+		(function(){
+			'use strict';{block:IfShowLinks}
+			var links = '{text:Links}'.split('|');
+			var texts = '{text:LinkTitles}'.split('|');
+			var ul =  document.getElementById('links');
+			for(var i = 0; i < links.length; i++) {
+				if(links[i].substr(0, 4) != "http") {
+					links[i] = "http://" + links[i];
+				}
+				ul.innerHTML += '<li><a href="' + links[i] + '">' + (texts[i] ? texts[i] : links[i]) + '</a></li>';
+			}{/block:IfShowLinks}
+			var spacers = document.getElementsByClassName('absolute-spacefiller');
+			for(var i = 0, len = spacers.length; i < len; i++) {
+				spacers[i].style.height = document.getElementById(spacers[i].getAttribute('data-for')).offsetHeight + 'px';
+			}{block:DayPage}
+			var date = window.location.href.split('day')[1].split('/');
+			date.splice(0, 1);
+			date = date.map(function(d) {
+				return parseInt(d, 10);
+			});
+			var spot = document.getElementById('date');
+			var months = [
+				'January', 'February', 'March', 'April', 'May', 'June', 'July',
+				'August', 'September', 'October', 'November', 'December'
+			];
+			spot.innerHTML = months[date[1] - 1] + " " + date[2] + ", " + date[0];{/block:DayPage}
+		})();
+		</script>
+		<script {block:SearchPage}src=""{/block:SearchPage}{block:TagPage}src=""{/block:TagPage}{block:DayPage}src=""{/block:DayPage}>
+		(function() {
+			var content = document.getElementById('content');
+			var page = 1;
+			var req;
+			var children = [];
+			if(window.location.href.indexOf('/page/') != -1) {
+				page = parseInt(window.location.href.substr(window.location.href.indexOf('/page/') + 6));
+			}
+			document.addEventListener('scroll', function(e) {
+				if(children.length) {
+					if(window.scrollY > content.offsetHeight - window.innerHeight * 3) {
+						var child = content.appendChild(children[0]);
+						var spacer = child.getElementsByClassName('absolute-spacefiller')[0];
+						spacer.style.height = document.getElementById(spacer.getAttribute('data-for')).offsetHeight + 'px';
+						children.splice(0, 1);
+						Tumblr.LikeButton.get_status_by_post_ids([spacer.getAttribute('data-for').substr(7)]);
+					}
+				}
+				if(children.length < 4) {
+					if(req === undefined) {
+						req = new XMLHttpRequest();
+						req.onreadystatechange = function() {
+							if(req.readyState == 4) {
+								if(req.status == 200 && req.responseText) {
+									var start = req.responseText.indexOf('<!-- ^.^ -->');
+									var end = req.responseText.indexOf('<!-- v.v -->');
+									if(start != -1 && end != -1) {
+										var doc = document.implementation.createHTMLDocument('example');
+										doc.documentElement.innerHTML = '<div id="doc">' + req.responseText.substring(start, end) + '</div>';
+										children = children.concat(Array.prototype.slice.call(doc.getElementById('doc').children));
+									}
+									page++;
+								}
+								req = undefined;
+							}
+						};
+						req.open('GET', '{BlogURL}page/' + (page + 1), true);
+						req.send();
+					}
+				}
+			});
+		})();
+		</script>
+	</body>
+</html>
