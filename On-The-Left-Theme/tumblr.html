@@ -325,7 +325,7 @@
 					</div>{/block:Text}{block:Photo}
 					<figure>
 						{LinkOpenTag}
-							<img src="{PhotoURL-500}" alt="Photo" width="{PhotoWidth-500}">
+							<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="{PhotoWidth-500}">
 						{LinkCloseTag}{block:HighRes}
 						<a href="{PhotoURL-HighRes}">{lang:View high resolution}</a>
 						{/block:HighRes}{block:Caption}
@@ -333,7 +333,7 @@
 					</figure>{/block:Photo}{block:Panorama}
 					<figure>
 						{LinkOpenTag}
-							<img src="{PhotoURL-500}" alt="Photo" width="{PhotoWidth-500}">
+							<img src="{PhotoURL-500}" alt="{PhotoAlt}" width="{PhotoWidth-500}">
 						{LinkCloseTag}
 						<a href="{PhotoURL-Panorama}">{lang:View high resolution}</a>{block:Caption}
 						<figcaption {block:RebloggedFrom}class="reblog"{/block:RebloggedFrom}>{Caption}</figcaption>{/block:Caption}
