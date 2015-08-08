@@ -21,7 +21,8 @@
 		<meta name="text:LinkTitles" content="First link|Second link" />
 		<meta name="if:FixedBackground" content="false"/>
 		<meta name="if:ShowSubtitle" content="true"/>
-		<meta name="if:ShowLinks" content="false"/>{/block:Hidden}
+		<meta name="if:ShowLinks" content="false"/>
+		<meta name="text:GoogleAnalytics" content="//Put entire GA code here" />{/block:Hidden}
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<link rel="shortcut icon" href="{Favicon}">
@@ -322,12 +323,19 @@
 					<div>
 						{Body}
 					</div>{/block:Text}{block:Photo}
-					<figure>{LinkOpenTag}
-						<img src="{PhotoURL-500}" alt="Photo" width="{PhotoWidth-500}">{LinkCloseTag}{block:Caption}
+					<figure>
+						{LinkOpenTag}
+							<img src="{PhotoURL-500}" alt="Photo" width="{PhotoWidth-500}">
+						{LinkCloseTag}{block:HighRes}
+						<a href="{PhotoURL-HighRes}">{lang:View high resolution}</a>
+						{/block:HighRes}{block:Caption}
 						<figcaption {block:RebloggedFrom}class="reblog"{/block:RebloggedFrom}>{Caption}</figcaption>{/block:Caption}
 					</figure>{/block:Photo}{block:Panorama}
-					<figure>{LinkOpenTag}
-						<img src="{PhotoURL-500}" alt="Photo" width="{PhotoWidth-500}">{LinkCloseTag}{block:Caption}
+					<figure>
+						{LinkOpenTag}
+							<img src="{PhotoURL-500}" alt="Photo" width="{PhotoWidth-500}">
+						{LinkCloseTag}
+						<a href="{PhotoURL-Panorama}">{lang:View high resolution}</a>{block:Caption}
 						<figcaption {block:RebloggedFrom}class="reblog"{/block:RebloggedFrom}>{Caption}</figcaption>{/block:Caption}
 					</figure>{/block:Panorama}{block:Photoset}
 					<figure>
@@ -501,5 +509,6 @@
 			});
 		})();
 		</script>
+		<script>{text:GoogleAnalytics}</script>
 	</body>
 </html>
